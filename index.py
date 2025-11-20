@@ -36,8 +36,6 @@ def run_calculator(file, output):
 
     print(f"dataset of {file} written to: {output}")
 
-
 if __name__ == "__main__":
     run_calculator("bible.txt", "dzaynakoyt_bible.csv")
     run_calculator("dictionary.txt", "dzaynakoyt_dictionary.csv")
-    
