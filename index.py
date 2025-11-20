@@ -3,7 +3,7 @@ import csv
 from collections import defaultdict
 
 pattern = r'(?:((?<![աէոօեիը])ւ)|(?:[աէոօեիը]+վ(?![աէոօեիը]|$)|[աէոօեիը]+[ւյ]?))' # vowel
-pattern = r'[^\n\sաէոօեիըւ0-9]+' # consonant
+# pattern = r'[^\n\sաէոօեիըւ0-9]+' # consonant
 allow_overlap = False
 
 def count_unique_matches(text, pattern):
