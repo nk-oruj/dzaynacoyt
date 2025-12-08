@@ -2,8 +2,8 @@ import re
 import csv
 from collections import defaultdict
 
-pattern = r'(?:((?<![աէոօեիը])ւ)|(?:[աէոօեիը]+վ(?![աէոօեիը]|$)|[աէոօեիը]+[ւյ]?))' # vowels
-# pattern = r'[^\n\sաէոօեիըւ0-9]+' # consonants
+pattern_vowels = r'(?:((?<![աէոօեիը])ւ)|(?:[աէոօեիը]+վ(?![աէոօեիը]|$)|[աէոօեիը]+[ւյ]?))' # vowels
+pattern_consonants = r'[^\n\sաէոօեիըւ0-9]+' # consonants
 allow_overlap = False
 
 def count_unique_matches(text, pattern):
@@ -16,7 +16,7 @@ def count_unique_matches(text, pattern):
     return counts
 
 
-def run_calculator(file, output):
+def run_calculator(file, pattern, output):
     # read the input file
     with open(file, "r", encoding="utf-8") as f:
         text = f.read()
@@ -37,5 +37,7 @@ def run_calculator(file, output):
     print(f"dataset of {file} written to: {output}")
 
 if __name__ == "__main__":
-    run_calculator("bible.txt", "dzaynakoyt_bible.csv")
-    run_calculator("dictionary.txt", "dzaynakoyt_dictionary.csv")
+    run_calculator("./wordlists/bible.txt", pattern_vowels, "./statistics/vowels/bible.csv")
+    run_calculator("./wordlists/bible.txt", pattern_consonants, "./statistics/consonants/bible.csv")
+    run_calculator("./wordlists/dictionary.txt", pattern_vowels, "./statistics/vowels/dictionary.csv")
+    run_calculator("./wordlists/dictionary.txt", pattern_consonants, "./statistics/consonants/dictionary.csv")
